@@ -22,7 +22,7 @@ RUN yum update -y && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     yum clean all -y
 
-RUN mkdir -p log &&  mkdir -p tmp && mkdir -p db/sphinx/production
+RUN mkdir -p log &&  mkdir -p tmp/binlog/production && mkdir -p db/sphinx/production
 RUN chmod -R 777 log tmp db
 
 ADD config/production.sphinx.conf ./config/production.sphinx.conf
