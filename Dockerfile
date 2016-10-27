@@ -22,9 +22,8 @@ RUN yum update -y && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     yum clean all -y
 
-RUN mkdir -p log &&  mkdir -p tmp && mkdir -p db
-
-USER 1001
+RUN mkdir -p log &&  mkdir -p tmp && mkdir -p db/sphinx/production
+RUN chmod -R 777 log tmp db
 
 ADD config/production.sphinx.conf ./config/production.sphinx.conf
 
@@ -32,4 +31,4 @@ USER 1001
 
 EXPOSE 9312
 
-CMD indexer --config config/production.sphinx.conf --all --rotate && /usr/bin/searchd --config ./config/production.sphinx.conf
+CMD  indexer --config config/production.sphinx.conf --all --rotate && /usr/bin/searchd --config ./config/production.sphinx.conf
