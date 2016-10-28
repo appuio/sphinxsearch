@@ -31,4 +31,4 @@ USER 1001
 
 EXPOSE 9312
 
-CMD  indexer --config config/production.sphinx.conf --all --rotate && /usr/bin/searchd --config ./config/production.sphinx.conf
+CMD  indexer --config config/production.sphinx.conf --all --rotate && /usr/bin/searchd --nodetach --config ./config/production.sphinx.conf
